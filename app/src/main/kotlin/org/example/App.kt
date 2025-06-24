@@ -6,14 +6,18 @@ fun main() {
     val f1 = Fraccion(2, 3)
     val f2 = Fraccion(1, 6)
 
-    println("Fracción 1: ${f1}")
-    println("Fracción 2: ${f2}")
+    println("Fracción 1: $f1")
+    println("Fracción 2: $f2")
 
     val suma = f1 + f2
     val resta = f1 - f2
+    val producto = f1 * f2
+    val division = f1 / f2
 
     println("Suma: $suma")
     println("Resta: $resta")
+    println("Multiplicación: $producto")
+    println("División: $division")
 }
 
 class Fraccion(numerador: Int, denominador: Int) {
@@ -55,6 +59,21 @@ class Fraccion(numerador: Int, denominador: Int) {
     operator fun minus(otra: Fraccion): Fraccion {
         val nuevoNumerador = this.numerador * otra.denominador - this.denominador * otra.numerador
         val nuevoDenominador = this.denominador * otra.denominador
+        return Fraccion(nuevoNumerador, nuevoDenominador)
+    }
+
+    operator fun times(otra: Fraccion): Fraccion {
+        val nuevoNumerador = this.numerador * otra.numerador
+        val nuevoDenominador = this.denominador * otra.denominador
+        return Fraccion(nuevoNumerador, nuevoDenominador)
+    }
+
+    operator fun div(otra: Fraccion): Fraccion {
+        if (otra.numerador == 0) {
+            throw IllegalArgumentException("No se puede dividir por una fracción con numerador cero (equivale a dividir por cero).")
+        }
+        val nuevoNumerador = this.numerador * otra.denominador
+        val nuevoDenominador = this.denominador * otra.numerador
         return Fraccion(nuevoNumerador, nuevoDenominador)
     }
 
