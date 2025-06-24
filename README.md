@@ -6,11 +6,11 @@
 
 ## Información del Alumno
 
-**Nombre y Apellido:** [Escribir aquí tu nombre y apellido]
+**Nombre y Apellido:** [Joaquin Ardevol]
 
-**Curso:** [Escribir aquí tu curso]
+**Curso:** [4to informática]
 
-**Fecha de entrega:** [Escribir aquí la fecha de entrega]
+**Fecha de entrega:** [24/06/2025]
 
 ---
 
