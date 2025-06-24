@@ -1,9 +1,19 @@
 package org.example
 
 fun main() {
+    println("Hola app!")
 
-    val fraccion = Fraccion(3, 4)
-    fraccion.mostrar()
+    val f1 = Fraccion(2, 3)
+    val f2 = Fraccion(1, 6)
+
+    println("Fracción 1: ${f1}")
+    println("Fracción 2: ${f2}")
+
+    val suma = f1 + f2
+    val resta = f1 - f2
+
+    println("Suma: $suma")
+    println("Resta: $resta")
 }
 
 class Fraccion(numerador: Int, denominador: Int) {
@@ -25,6 +35,7 @@ class Fraccion(numerador: Int, denominador: Int) {
         if (denominador == 0) {
             throw IllegalArgumentException("El denominador no puede ser cero")
         }
+        simplificar()
     }
 
     override fun toString(): String {
@@ -33,5 +44,32 @@ class Fraccion(numerador: Int, denominador: Int) {
 
     fun mostrar() {
         println(toString())
+    }
+
+    operator fun plus(otra: Fraccion): Fraccion {
+        val nuevoNumerador = this.numerador * otra.denominador + this.denominador * otra.numerador
+        val nuevoDenominador = this.denominador * otra.denominador
+        return Fraccion(nuevoNumerador, nuevoDenominador)
+    }
+
+    operator fun minus(otra: Fraccion): Fraccion {
+        val nuevoNumerador = this.numerador * otra.denominador - this.denominador * otra.numerador
+        val nuevoDenominador = this.denominador * otra.denominador
+        return Fraccion(nuevoNumerador, nuevoDenominador)
+    }
+
+    private fun simplificar() {
+        val mcd = mcd(kotlin.math.abs(numerador), kotlin.math.abs(denominador))
+        numerador /= mcd
+        denominador /= mcd
+
+        if (denominador < 0) {
+            numerador *= -1
+            denominador *= -1
+        }
+    }
+
+    private fun mcd(a: Int, b: Int): Int {
+        return if (b == 0) a else mcd(b, a % b)
     }
 }
