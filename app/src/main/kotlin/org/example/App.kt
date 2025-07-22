@@ -4,5 +4,16 @@
 package org.example
 
 fun main() {
-    println("Hola app!")
+    //Parte 1
+    val f1 = Fraccion(-4, 3)
+    println("La fracción es: " + f1.toString())
+
+    //Parte 2
+    val f2 = Fraccion(0,2)
+    println("la suma es: ${f1 + f2}")
+    println("la resta es: ${f1 - f2}")
+
+    //Parte 3
+    println("la multiplicación es: ${f1 * f2}")
+    println("la división es: ${f1 / f2}")
 }
